@@ -18,7 +18,7 @@ interface Product {
 }
 
 const Cart = (): JSX.Element => {
-  const { cart } = useCart();
+  const { cart, removeProduct } = useCart();
 
   const cartFormatted = cart.map(product => ({
     ...product,
@@ -40,9 +40,9 @@ const Cart = (): JSX.Element => {
   //   // TODO
   // }
 
-  // function handleRemoveProduct(productId: number) {
-  //   // TODO
-  // }
+  function handleRemoveProduct(productId: number) {
+    removeProduct(productId)
+  }
 
   return (
     <Container>
@@ -100,7 +100,7 @@ const Cart = (): JSX.Element => {
                 <button
                   type="button"
                   data-testid="remove-product"
-                // onClick={() => handleRemoveProduct(product.id)}
+                  onClick={() => handleRemoveProduct(product.id)}
                 >
                   <MdDelete size={20} />
                 </button>
